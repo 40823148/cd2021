@@ -138,10 +138,82 @@ img.add_border {
 <p>撰寫lua程式達到自動取放方塊</p>
 <p></p>
 <p>lua程式碼▼</p>
-<p></p>
+<pre class="brush:lua;auto-links:false;toolbar:false" contenteditable="false">function moving(x,y)
+    a=0.400
+    b=0.400
+    c=math.pow(math.pow(x,2)+math.pow(y,2),0.5)
+    s=(a+b+c)/2
+    area=math.pow((s*(s-a)*(s-b)*(s-c)),0.5)
+    h=area/(2*c)
+    deg1_base=math.atan(x/y)
+    if x&lt;0 and y&lt;0 then
+        deg1_base=deg1_base+math.pi
+    end
+    deg1_tri=math.asin(h/a)
+    deg1=deg1_base+deg1_tri
+    deg2=math.pi-(0.5*math.pi-deg1_tri)-math.acos(h/b)
+    deg3=deg2-deg1
+    sim.setJointTargetPosition(joint01,deg1)
+    sim.setJointTargetPosition(joint02,-deg2)
+    sim.setJointTargetPosition(joint03,deg3)
+    
+end
+
+function sysCall_threadmain()
+    joint01=sim.getObjectHandle('joint1')
+    joint02=sim.getObjectHandle('joint2')
+    joint03=sim.getObjectHandle('joint3')
+    jointz=sim.getObjectHandle('jointz')
+    sim.setJointTargetPosition(joint01,0)
+    sim.setJointTargetPosition(joint02,0)
+    sim.setJointTargetPosition(joint03,0)
+    sim.setJointTargetPosition(jointz,0)
+    sim.setIntegerSignal("pad_switch",1)
+    sim.setJointTargetPosition(jointz,-0.030)
+    sim.wait(2)
+    sim.setJointTargetPosition(jointz,0)
+     while sim.getSimulationState()~=sim.simulation_advancing_abouttostopre do
+        moving(0.2,0.7)
+        sim.wait(5)
+        sim.setIntegerSignal("pad_switch",0)
+        sim.wait(5)
+        sim.setIntegerSignal("pad_switch",1)
+        sim.setJointTargetPosition(jointz,-0.056)
+        sim.wait(5)
+        sim.setJointTargetPosition(jointz,0)
+        sim.wait(5)
+        moving(-0.3,-0.55)
+        sim.wait(5)
+        sim.setIntegerSignal("pad_switch",0)
+        sim.wait(5)
+        sim.setIntegerSignal("pad_switch",1)
+        sim.setJointTargetPosition(jointz,-0.06)
+        sim.wait(5)
+        sim.setJointTargetPosition(jointz,0)
+        sim.wait(5)
+        moving(0.1,0.55)
+        sim.wait(5)
+        sim.setIntegerSignal("pad_switch",0)
+        sim.wait(5)
+        sim.setIntegerSignal("pad_switch",1)
+        sim.setJointTargetPosition(jointz,-0.056)
+        sim.wait(5)
+        sim.setJointTargetPosition(jointz,0)
+        sim.wait(5)
+        moving(0,0.8)
+        sim.wait(5)
+        sim.setIntegerSignal("pad_switch",0)
+        sim.wait(5)
+        sim.setIntegerSignal("pad_switch",1)
+        sim.setJointTargetPosition(jointz,-0.056)
+        sim.wait(5)
+        sim.setJointTargetPosition(jointz,0)
+        sim.wait(5)
+    end
+end</pre>
+<p><br/><br/></p>
 <p>成果影片▼</p>
-<p></p>
-<br />機械手臂控制 << <a href='機械手臂控制.html'>Previous</a> <a href='Lua鍵盤控制.html'>Next</a> >> Lua鍵盤控制</div>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/LzTVGoz29aU" width="560"></iframe></p><br />機械手臂控制 << <a href='機械手臂控制.html'>Previous</a> <a href='Lua鍵盤控制.html'>Next</a> >> Lua鍵盤控制</div>
         
     <!-- footer -->
       <div class="container">

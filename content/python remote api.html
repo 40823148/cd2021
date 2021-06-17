@@ -138,13 +138,86 @@ img.add_border {
 <p>利用python remote api 在軟體外部控制方塊取放</p>
 <p></p>
 <p>python remote api程式碼▼</p>
-<p></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import sim as vrep
+import math
+import random
+import time
+import math
+
+def moving(x,y):
+    a=0.400
+    b=0.400
+    c=math.pow(math.pow(x,2)+math.pow(y,2),0.5)
+    s=(a+b+c)/2
+    area=math.pow((s*(s-a)*(s-b)*(s-c)),0.5)
+    h=area/(2*c)
+    deg1_base=math.atan(x/y)
+    if x&lt;0 and y&lt;0 :
+        deg1_base=deg1_base+math.pi
+    deg1_tri=math.asin(h/a)
+    deg1=deg1_base+deg1_tri
+    deg2=math.pi-(0.5*math.pi-deg1_tri)-math.acos(h/b)
+    deg3=deg2-deg1
+    vrep.simxSetJointTargetPosition(clientID,joint01, deg1,opmode)
+    vrep.simxSetJointTargetPosition(clientID,joint02, -deg2,opmode)
+    vrep.simxSetJointTargetPosition(clientID,joint03, deg3,opmode)
+
+
+print('start')
+
+vrep.simxFinish(-1)
+ 
+clientID = vrep.simxStart('127.0.0.1', 19999, True, True, 5000, 5)
+ 
+if clientID!= -1:
+    print("Connected to remote API server")
+    
+    res=vrep.simxAddStatusbarMessage(
+        clientID,"123",
+        vrep.simx_opmode_oneshot)
+    if res not in (vrep.simx_return_ok,vrep.simx_return_novalue_flag):
+        print("could not add a message to the status bar.")
+        
+        
+    opmode=vrep.simx_opmode_oneshot_wait
+    STREAMING=vrep.simx_opmode_streaming
+    
+    vrep.simxStartSimulation(clientID,opmode)
+    ret,joint01=vrep.simxGetObjectHandle(clientID,"joint1",opmode)
+    ret,joint02=vrep.simxGetObjectHandle(clientID,"joint2",opmode)
+    ret,joint03=vrep.simxGetObjectHandle(clientID,"joint3",opmode)
+    ret,jointz=vrep.simxGetObjectHandle(clientID,"jointz",opmode)
+    
+    vrep.simxSetJointTargetPosition(clientID,joint01,0,opmode)
+    vrep.simxSetJointTargetPosition(clientID,joint02,0,opmode)
+    vrep.simxSetJointTargetPosition(clientID,joint03,0,opmode)
+    vrep.simxSetIntegerSignal(clientID,"pad_switch",1,opmode)
+    vrep.simxSetJointTargetPosition(clientID,jointz,-0.056,opmode)
+    time.sleep(1)
+    vrep.simxSetJointTargetPosition(clientID,jointz,0,opmode)
+    while True:
+        moving(0.2,0.7)
+        time.sleep(1)
+        vrep.simxSetIntegerSignal(clientID,"pad_switch",0,opmode)
+        time.sleep(1)
+        vrep.simxSetIntegerSignal(clientID,"pad_switch",1,opmode)
+        vrep.simxSetJointTargetPosition(clientID,jointz,-0.056,opmode)
+        time.sleep(1)
+        vrep.simxSetJointTargetPosition(clientID,jointz,0,opmode)
+        moving(-0.3,-0.55)
+        time.sleep(1)
+        vrep.simxSetIntegerSignal(clientID,"pad_switch",0,opmode)
+        time.sleep(1)
+        vrep.simxSetIntegerSignal(clientID,"pad_switch",1,opmode)
+        vrep.simxSetJointTargetPosition(clientID,jointz,-0.056,opmode)
+        time.sleep(1)
+        vrep.simxSetJointTargetPosition(clientID,jointz,0,opmode)</pre>
+<p><br/><br/></p>
 <p>成果影片▼</p>
 <p></p>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/FInieDDrPvo" width="560"></iframe></p>
 <p></p>
-<p></p>
-<p></p>
-<br />Lua鍵盤控制 << <a href='Lua鍵盤控制.html'>Previous</a> <a href='影片.html'>Next</a> >> 影片</div>
+<p></p><br />Lua鍵盤控制 << <a href='Lua鍵盤控制.html'>Previous</a> <a href='影片.html'>Next</a> >> 影片</div>
         
     <!-- footer -->
       <div class="container">
