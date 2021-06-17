@@ -143,7 +143,72 @@
 <p>SSH 的連線加密機制依賴 private key 與 public key 之間的配對, 當使用者建立 SSH key pair 時, private key 必須保護在近端, 而 public key 則必須送到進行認證的遠端伺服器中.</p>
 <p></p>
 <p><strong>●SSH 操作步驟</strong></p>
-<p></p><h2>機械手臂控制</h2>
+<p></p>
+<p>下載putty至近端data</p>
+<p><a href="https://www.puttygen.com/download-putty">putty下載</a></p>
+<p></p>
+<p style="text-align: center;"><strong>建立SSH Key</strong></p>
+<p style="text-align: center;"><strong></strong></p>
+<p style="text-align: left;"><strong>1.開啟編輯器輸入"sh"</strong></p>
+<p style="text-align: left;"><strong><img alt="" height="157" src="/images/messageImage_1623900474268.jpg" width="300"/></strong></p>
+<p style="text-align: left;"><strong>2.輸入<span>ssh-keygen -t rsa -b 4096 -C "學號" 可得到ssh key</span></strong></p>
+<p style="text-align: left;"><strong><span>▼key的建立位置</span></strong></p>
+<p style="text-align: left;"><strong><span>▼輸入y</span></strong></p>
+<p style="text-align: left;"><strong><span><img alt="" height="157" src="/images/messageImage_1623900565275.jpg" width="300"/></span></strong></p>
+<p style="text-align: left;"><strong><span>▼enter至此即完成key建立</span></strong></p>
+<p style="text-align: left;"><strong><span><img alt="" height="157" src="/images/messageImage_1623900602891.jpg" width="300"/></span></strong></p>
+<p style="text-align: center;"><b>github建立shh key</b></p>
+<p style="text-align: center;"><b></b></p>
+<p style="text-align: left;"><strong><span>3.找到路徑上的key</span></strong></p>
+<p style="text-align: left;"><strong><span><img alt="" height="255" src="/images/messageImage_1623900638146.jpg" width="300"/></span></strong></p>
+<p style="text-align: left;"><strong><span>4.用SCITE把id_rsa.pub 開啟 複製裡面所有的文字</span></strong></p>
+<p style="text-align: left;"><strong><span><img alt="" height="124" src="/images/messageImage_1623900779212.jpg" width="300"/></span></strong></p>
+<p style="text-align: left;"><strong><span>5.到Github--&gt;seeting--&gt;SSH and GPG keys 按下"New SSH key"</span></strong></p>
+<p style="text-align: left;"><strong><span><img alt="" height="203" src="/images/messageImage_1623900863502.jpg" width="300"/></span></strong></p>
+<p style="text-align: left;"><strong>6.Title 上寫上學號 Key 複製貼上剛剛的Key 再按下"Add SSH key"</strong></p>
+<p style="text-align: left;"><strong><img alt="" height="172" src="/images/messageImage_1623900923938.jpg" width="300"/></strong></p>
+<p style="text-align: left;"><strong></strong></p>
+<p style="text-align: center;"><b>puttygen.exe</b></p>
+<p style="text-align: center;"><b></b></p>
+<p style="text-align: left;"><b>7.開啟puttygen.exe</b></p>
+<p style="text-align: left;"><b><img alt="" height="245" src="/images/messageImage_1623901131678.jpg" width="300"/></b></p>
+<p style="text-align: left;"><strong>8.按下"Load"</strong></p>
+<p style="text-align: left;"><strong><img alt="" height="295" src="/images/messageImage_1623901184597.jpg" width="300"/></strong></p>
+<p style="text-align: left;"><strong>▼選取<span>選取id_rsa </span></strong></p>
+<p style="text-align: left;"><strong><img alt="" height="169" src="/images/messageImage_1623901373986.jpg" width="300"/></strong></p>
+<p style="text-align: left;"><strong>▼<span>按下"save private key" 得到ppk 存到同一個路徑</span></strong></p>
+<p style="text-align: left;"><strong><img alt="" height="295" src="/images/messageImage_1623901422269.jpg" width="300"/></strong></p>
+<p style="text-align: left;"><strong>▼.ppk檔</strong></p>
+<p style="text-align: left;"><strong><img alt="" height="239" src="/images/messageImage_1623901525084.jpg" width="300"/></strong></p>
+<p style="text-align: center;"><strong><span>putty.exe</span></strong></p>
+<p style="text-align: left;"><b>9.開啟<span>putty.exe</span></b></p>
+<p style="text-align: left;"><b><img alt="" height="281" src="/images/messageImage_1623901564031.jpg" width="300"/></b></p>
+<p style="text-align: left;"><b>10.<span>在"Saved Sessions" 輸入 "github.com" 在按下 "Save"</span></b></p>
+<p style="text-align: left;"><b><span><img alt="" height="293" src="/images/messageImage_1623901620415.jpg" width="300"/></span></b></p>
+<p style="text-align: left;"><b><span>11.再到 "Auth" 找到"Private key file for authentication" 按下"browse" </span></b></p>
+<p style="text-align: left;"><b><span><img alt="" height="293" src="/images/messageImage_1623901658383.jpg" width="300"/></span></b></p>
+<p style="text-align: left;">▼<strong>選取.ppk檔</strong></p>
+<p style="text-align: left;"><strong><img alt="" height="169" src="/images/messageImage_1623901667360.jpg" width="300"/></strong></p>
+<p style="text-align: left;"><strong>12.回到"session" <span>按下"github.com" 再按下 "Save"</span></strong></p>
+<p style="text-align: left;"><strong><img alt="" height="293" src="/images/messageImage_1623901717811.jpg" width="300"/></strong></p>
+<p style="text-align: left;"><strong></strong></p>
+<p style="text-align: center;"><strong>.git/config 與 <span>start.bat 更改</span></strong></p>
+<p style="text-align: left;"><strong><span>13.找到.git資料夾(*如果找不到這個資料夾記得在功能區--&gt; 顯示--&gt;將"隱藏的項目"勾選)</span></strong></p>
+<p style="text-align: left;"><strong><span><img alt="" height="245" src="/images/messageImage_1623901756241.jpg" width="300"/></span></strong></p>
+<p style="text-align: left;"><strong><span>14.找到config 用SCITE開啟</span></strong></p>
+<p style="text-align: left;"><strong><span><img alt="" height="245" src="/images/messageImage_1623901774026.jpg" width="300"/></span></strong></p>
+<p style="text-align: left;"><strong><span>15.輸入</span></strong></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">#url = https://github.com/40823148/cd2021.git
+    url = git@github.com:40823148/cd2021.git</pre>
+<p style="text-align: left;"><img alt="" height="339" src="/images/messageImage_1623901843042.jpg" width="300"/></p>
+<p style="text-align: left;"><strong>16.找到 start.bat  用SCITE開啟</strong></p>
+<p style="text-align: left;"><strong><span><img alt="" height="239" src="/images/messageImage_1623901874525.jpg" width="300"/></span></strong></p>
+<p style="text-align: left;"><strong><span>17.輸入</span></strong></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">set GIT_HOME=%Disk%:\portablegit\bin\
+set GIT_SSH=%Disk%:\putty\plink.exe</pre>
+<p style="text-align: left;"><img alt="" height="339" src="/images/messageImage_1623901895602.jpg" width="300"/></p>
+<p style="text-align: left;"><strong>即完成SHH設置</strong></p>
+<p style="text-align: left;"><strong>end</strong></p><h2>機械手臂控制</h2>
 <p></p>
 <p>利用<strong>onshape</strong>繪製手臂簡圖 手臂包含底座、手臂1、手臂2和夾頭</p>
 <p></p>
