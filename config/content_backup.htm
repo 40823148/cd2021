@@ -40,7 +40,8 @@
 <p><span></span></p>
 <p></p>
 <p><span></span></p>
-<p></p><h2>stage1後記</h2>
+<p></p>
+<h2>stage1後記</h2>
 <p>這次作業時間較短 只有4個禮拜</p>
 <p>花了較多時間再於設計及繪圖上</p>
 <p>以至於模擬除錯時間不足 導致沒有達到理想中的效果</p>
@@ -92,9 +93,7 @@
 <p>對於軟體需要一定的熟練度 非常考驗組裝邏輯和碰撞設定</p>
 <p></p>
 <p></p>
-<div id="gtx-trans" style="position: absolute; left: -2px; top: 829.375px;">
-<div class="gtx-trans-icon"></div>
-</div><h2>stage2後記</h2>
+<h2>stage2後記</h2>
 <p><strong></strong>此次設計分為兩個作業向 連桿設計繪圖及行走模擬</p>
 <p>設計繪圖方面需要對連桿有一定知識 對於連桿長度及其考驗</p>
 <p>長度稍有不同 軌跡就會不同</p>
@@ -125,13 +124,12 @@
 <p></p>
 <p></p>
 <p><br/><br/><br/><br/></p>
-<div id="gtx-trans" style="position: absolute; left: 197px; top: 423.469px;">
-<div class="gtx-trans-icon"></div>
-</div><h2>stage3工作內容</h2>
+<h2>stage3工作內容</h2>
 <p><strong></strong></p>
 <h2>stage3後記</h2>
 <p><strong></strong></p>
 <h1>個人做業</h1>
+<p></p>
 <p></p>
 <p></p>
 <h2>SSH</h2>
@@ -191,7 +189,25 @@
 <p style="text-align: left;"><strong><img alt="" height="169" src="/images/messageImage_1623901667360.jpg" width="300"/></strong></p>
 <p style="text-align: left;"><strong>12.回到"session" <span>按下"github.com" 再按下 "Save"</span></strong></p>
 <p style="text-align: left;"><strong><img alt="" height="293" src="/images/messageImage_1623901717811.jpg" width="300"/></strong></p>
-<p style="text-align: left;"><strong></strong></p><h2>機械手臂控制</h2>
+<p style="text-align: left;"><strong></strong></p>
+<p style="text-align: center;"><strong>.git/config 與 <span>start.bat 更改</span></strong></p>
+<p style="text-align: left;"><strong><span>13.找到.git資料夾(*如果找不到這個資料夾記得在功能區--&gt; 顯示--&gt;將"隱藏的項目"勾選)</span></strong></p>
+<p style="text-align: left;"><strong><span><img alt="" height="245" src="/images/messageImage_1623901756241.jpg" width="300"/></span></strong></p>
+<p style="text-align: left;"><strong><span>14.找到config 用SCITE開啟</span></strong></p>
+<p style="text-align: left;"><strong><span><img alt="" height="245" src="/images/messageImage_1623901774026.jpg" width="300"/></span></strong></p>
+<p style="text-align: left;"><strong><span>15.輸入</span></strong></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">#url = https://github.com/40823148/cd2021.git
+    url = git@github.com:40823148/cd2021.git</pre>
+<p style="text-align: left;"><img alt="" height="339" src="/images/messageImage_1623901843042.jpg" width="300"/></p>
+<p style="text-align: left;"><strong>16.找到 start.bat  用SCITE開啟</strong></p>
+<p style="text-align: left;"><strong><span><img alt="" height="239" src="/images/messageImage_1623901874525.jpg" width="300"/></span></strong></p>
+<p style="text-align: left;"><strong><span>17.輸入</span></strong></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">set GIT_HOME=%Disk%:\portablegit\bin\
+set GIT_SSH=%Disk%:\putty\plink.exe</pre>
+<p style="text-align: left;"><img alt="" height="339" src="/images/messageImage_1623901895602.jpg" width="300"/></p>
+<p style="text-align: left;"><strong>即完成SHH設置</strong></p>
+<p style="text-align: left;"><strong>end</strong></p>
+<h2>機械手臂控制</h2>
 <p></p>
 <p>利用<strong>onshape</strong>繪製手臂簡圖 手臂包含底座、手臂1、手臂2和夾頭</p>
 <p></p>
@@ -289,7 +305,8 @@ function sysCall_threadmain()
 end</pre>
 <p><br/><br/></p>
 <p>成果影片▼</p>
-<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/LzTVGoz29aU" width="560"></iframe></p><h3>Lua鍵盤控制</h3>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/LzTVGoz29aU" width="560"></iframe></p>
+<h3>Lua鍵盤控制</h3>
 <p></p>
 <p>撰寫Lua鍵盤控制程式 來達到使用鍵盤手動控制手臂位置及方塊取放</p>
 <p></p>
@@ -351,7 +368,8 @@ end</pre>
 <p>成果影片▼</p>
 <p></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/qU561a7ScpI" width="560"></iframe></p>
-<p></p><h3>python remote api</h3>
+<p></p>
+<h3>python remote api</h3>
 <p></p>
 <p>利用python remote api 在軟體外部控制方塊取放</p>
 <p></p>
@@ -435,7 +453,23 @@ if clientID!= -1:
 <p></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/FInieDDrPvo" width="560"></iframe></p>
 <p></p>
-<p></p><h1>影片</h1>
+<p></p>
+<h2>亂數抽選</h2>
+<p></p>
+<p></p>
+<h2>stage1四驅車延伸</h2>
+<p>新增兩種控制方式 並大幅簡化模擬實的模型</p>
+<p>完整實體圖▼</p>
+<p></p>
+<p>簡化設計圖▼</p>
+<p></p>
+<p>coppliasim組合圖▼</p>
+<p></p><h3>鍵盤控制</h3>
+<p>使用lua程式控制車子前進、後退和停止</p>
+<p>lua程式碼▼</p>
+<p></p>
+<p>成果影片▼</p>
+<p></p><h3>python remote api 控制</h3><h1>影片</h1>
 <p></p>
 <p></p>
 <p></p>
