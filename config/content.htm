@@ -11,7 +11,8 @@
 <p></p>
 <p></p>
 <p></p>
-<p></p><h1>stage1</h1>
+<p></p>
+<h1>stage1</h1>
 <p style="text-align: center;">兩人一組 以短時間內設計產品</p>
 <p style="text-align: center;"><a href="https://40823148.github.io/stage1-ag20/content/index.html">組別網站</a></p>
 <p style="text-align: center;"><strong>產品題目</strong>:四驅車</p>
@@ -130,7 +131,8 @@
 <h1>個人作業</h1>
 <p></p>
 <p></p>
-<p></p><h2>SSH</h2>
+<p></p>
+<h2>SSH</h2>
 <p></p>
 <h4>SSH 網路連線加密機制</h4>
 <p>SSH 指 Secure SHell, 是一種網路連線加密機制, 當我們在 Mac OS 或 Linux 操作系統中的 Terminal 或 XTerm 時, 可以利用 ssh 帳號@遠端主機 ip 或符號名稱, 就可以輸入認證密碼, 登入到遠端主機.</p>
@@ -222,7 +224,8 @@ set GIT_SSH=%Disk%:\putty\plink.exe</pre>
 <p><span><img alt="" height="169" src="/images/messageImage_1623897729265.jpg" width="300"/></span></p>
 <p><span></span></p>
 <p><span>組合完成後分別以Lua程式、Lua鍵盤程式和python remote api進行模擬控制</span></p>
-<p><span></span><a href="https://cad.onshape.com/documents/e8bd0149b0ac0404b15015dc/w/ad6bf123cb5b509262432800/e/030073028105c066310b2629">零件檔案</a></p><h3>Lua程式控制</h3>
+<p><span></span><a href="https://cad.onshape.com/documents/e8bd0149b0ac0404b15015dc/w/ad6bf123cb5b509262432800/e/030073028105c066310b2629">零件檔案</a></p>
+<p>程式檔案下載</p><h3>Lua程式控制</h3>
 <p></p>
 <p>撰寫lua程式達到自動取放方塊</p>
 <p></p>
@@ -451,7 +454,7 @@ if clientID!= -1:
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/FInieDDrPvo" width="560"></iframe></p>
 <p></p>
 <p></p>
-<h2>亂數抽選</h2>
+<h2>1</h2>
 <p></p>
 <p></p>
 <h2>stage1四驅車延伸</h2>
@@ -461,7 +464,8 @@ if clientID!= -1:
 <p>簡化設計圖▼</p>
 <p></p>
 <p>coppliasim組合圖▼</p>
-<p><img alt="" height="165" src="/images/messageImage_1623907067106.jpg" width="300"/></p><h3>鍵盤控制</h3>
+<p><img alt="" height="165" src="/images/messageImage_1623907067106.jpg" width="300"/></p>
+<h3>鍵盤控制</h3>
 <p>使用lua程式控制車子前進、後退和停止</p>
 <p>lua程式碼▼</p>
 <pre class="brush:lua;auto-links:false;toolbar:false" contenteditable="false">function sysCall_init() 
@@ -539,13 +543,43 @@ function sysCall_actuation()
 end </pre>
 <p><br/><br/></p>
 <p>成果影片▼</p>
-<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/bY50ou4_bm8" width="560"></iframe></p><h3>python remote api 控制</h3>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/bY50ou4_bm8" width="560"></iframe></p>
+<h3>python remote api 控制</h3>
 <p>使用 python remote api 外部控制車子啟動</p>
 <p>python程式碼▼</p>
-<p></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import sim as vrep
+import sys
+# child threaded script: 
+#simExtRemoteApiStart(19999)
+ 
+vrep.simxFinish(-1)
+ 
+clientID = vrep.simxStart('127.0.0.1', 19999, True, True, 5000, 5)
+ 
+if clientID!= -1:
+    print("Connected to remote server")
+else:
+    print('Connection not successful')
+    sys.exit('Could not connect')
+ 
+errorCode,joint=vrep.simxGetObjectHandle(clientID,'input',vrep.simx_opmode_oneshot_wait)
+ 
+
+ 
+if errorCode == -1:
+    print('Can not find left or right motor')
+    sys.exit()
+ 
+errorCode=vrep.simxSetJointTargetVelocity(clientID,joint,-270, vrep.simx_opmode_oneshot_wait)
+
+</pre>
+<p><br/><br/></p>
 <p>成果影片▼</p>
-<p></p><h1>影片</h1>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/1d78G6XUT1k" width="560"></iframe></p><h1>影片</h1>
 <p></p>
 <p></p>
 <p></p>
 <p></p>
+<div id="gtx-trans" style="position: absolute; left: -4px; top: 17608.4px;">
+<div class="gtx-trans-icon"></div>
+</div>
